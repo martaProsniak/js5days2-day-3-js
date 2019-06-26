@@ -20,12 +20,12 @@ function displayCar() {
 }
 
 function move() {
-    if (accelerate) {
-        const displacementPerTick = velocity * (tickDuration / 1000)
+    if (!accelerate) return
+    const displacementPerTick = velocity * (tickDuration / 1000)
 
-        position += displacementPerTick
-        carElement.style.left = position + 'px'
-    }
+    position += displacementPerTick
+    carElement.style.left = position + 'px'
+
 
 }
 
