@@ -1,1 +1,3 @@
-console.log('Hello');
+function add(x, y) {
+    return x + y;
+}
