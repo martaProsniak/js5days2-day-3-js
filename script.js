@@ -1,9 +1,11 @@
 const carElement = document.createElement('div')
 const body = document.querySelector('body')
-let position = 0
+
 const tickDuration = 10
 const velocity = 100
+let accelerate = false;
 
+let position = 0
 
 
 function displayCar() {
@@ -18,10 +20,13 @@ function displayCar() {
 }
 
 function move() {
-    const displacementPerTick = velocity * (tickDuration/1000)
+    if (accelerate) {
+        const displacementPerTick = velocity * (tickDuration / 1000)
 
-    position += displacementPerTick
-    carElement.style.left = position + 'px'
+        position += displacementPerTick
+        carElement.style.left = position + 'px'
+    }
+
 }
 
 displayCar();
@@ -30,5 +35,23 @@ setInterval(
     // move instead of move() to pass the whole function into setInterval function
     move,
     tickDuration
+)
+
+window.addEventListener(
+    'keydown',
+    function (event) {
+        if (event.key === 'a') {
+            accelerate = true
+        }
+    }
+)
+
+window.addEventListener(
+    'keyup',
+    function (event) {
+        if (event.key === 'a') {
+            accelerate = false
+        }
+    }
 )
 
