@@ -6,13 +6,15 @@ function add(x, y) {
     return x + y;
 }
 
-function multiply(a, b){
-    if (typeof a !== 'number' || typeof b !== 'number') {
-        return 'Enter valid number!'
+function multiply(a, b) {
+    let sum = 0;
+
+    for (let i = 0; i < b; i++) {
+        sum = add(sum, a);
     }
-    return a * b;
+    return sum;
 }
 
-function square (a) {
+function square(a) {
     return multiply(a, a);
 }
