@@ -22,18 +22,14 @@ function displayCar() {
 function move() {
     const time = tickDuration / 1000
 
-    position = position + velocity * time + ((acceleration*time*time) / 2)
+    position = position + velocity * time + ((acceleration * time * time) / 2)
     velocity = velocity + acceleration * time
     carElement.style.left = position + 'px'
 }
 
 displayCar();
 
-setInterval(
-    // move instead of move() to pass the whole function into setInterval function
-    move,
-    tickDuration
-)
+setInterval(move, tickDuration)
 
 window.addEventListener(
     'keydown',
@@ -54,8 +50,16 @@ window.addEventListener(
             acceleration = 0
         }
         if (event.key === 'b') {
+            acceleration = -maxAcceleration
+        }
+        if (event.key === 's') {
             acceleration = 0
+            velocity = 0
         }
     }
 )
+
+
+
+
 
