@@ -1,5 +1,6 @@
+const containerElement = document.querySelector('body')
 const carElement = document.createElement('div')
-const body = document.querySelector('body')
+const roadElement = document.createElement('div')
 
 const tickDuration = 10
 const maxAcceleration = 10
@@ -8,7 +9,7 @@ let velocity = 0
 let acceleration = 0
 let position = 0
 
-function displayCar() {
+function displayCarAndCar() {
     carElement.style.width = '100px'
     carElement.style.height = '100px'
     carElement.style.backgroundColor = 'red'
@@ -16,7 +17,13 @@ function displayCar() {
     carElement.style.position = 'absolute'
     carElement.style.left = position + 'px'
 
-    body.appendChild(carElement)
+    roadElement.style.backgroundColor = 'grey'
+    roadElement.style.width = '100%'
+    roadElement.style.height = '100px'
+    roadElement.style.position = 'relative'
+    
+    roadElement.appendChild(carElement)
+    containerElement.appendChild(roadElement)
 }
 
 function move() {
@@ -27,7 +34,7 @@ function move() {
     carElement.style.left = position + 'px'
 }
 
-displayCar();
+displayCarAndCar();
 
 setInterval(
     // move instead of move() to pass the whole function into setInterval function
