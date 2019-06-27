@@ -22,8 +22,11 @@ function displayCar() {
 function move() {
     const time = tickDuration / 1000
 
-    position = position + velocity * time + ((acceleration * time * time) / 2)
-    velocity = velocity + acceleration * time
+    const newPosition = position + velocity * time + ((acceleration * time * time) / 2)
+
+    position = newPosition < position ? position : newPosition
+    const newVelociy = velocity + acceleration * time
+    velocity = Math.max(0, newVelociy)
     carElement.style.left = position + 'px'
 }
 
@@ -51,10 +54,6 @@ window.addEventListener(
         }
         if (event.key === 'b') {
             acceleration = -maxAcceleration
-        }
-        if (event.key === 's') {
-            acceleration = 0
-            velocity = 0
         }
     }
 )
