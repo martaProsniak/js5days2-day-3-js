@@ -66,5 +66,3 @@ window.addEventListener(
     }
 )
 
-lala
-
